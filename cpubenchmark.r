@@ -196,12 +196,9 @@ bench_solve_main <- function() {
 }
 
 ## ===== 자동 실행 트리거 =====
-if (sys.nframe() == 0L) {
-  # source()로 불리면 인터랙티브 진입, Rscript면 non-interactive
-  if (interactive()) {
-    bench_solve_interactive()
-  } else {
-    bench_solve_main()
-  }
+if (interactive()) {
+  bench_solve_interactive()   # R 콘솔/Studio 등 인터랙티브 환경에서 source하면 바로 실행
+} else {
+  bench_solve_main()          # Rscript 등 비인터랙티브
 }
 # =========================== EOF ===========================
